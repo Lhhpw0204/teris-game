@@ -1,3 +1,3 @@
-let ss:string = "hello world";
+import { Square } from "./core/Square";
 
-console.log(ss)
+const sq = new Square({ x: 0, y: 0}, "red");
