@@ -6,12 +6,12 @@ import PageConfig from "./PageConfig"
 export class SquarePageViewer implements IViewer {
     private dom ? : JQuery<HTMLElement>
     private isRemove: boolean = false
-    show(): void{
+    show(): void {
         if(this.isRemove) {
             return;
         }
         if(!this.dom) {
-            this.dom = $("div").css({
+            this.dom = $("<div>").css({
                 position: "absolute",
                 width: PageConfig.SquareSize.width,
                 height: PageConfig.SquareSize.height,

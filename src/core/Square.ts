@@ -3,6 +3,11 @@ import { Point, IViewer } from "./types"
 export class Square{
     // 属性： 显示 
     private _viewer?: IViewer
+    private _point: Point = {
+        x: 0,
+        y: 0
+    }
+    private _color: string = "red";
 
     public get viewer() {
         return this._viewer
@@ -24,7 +29,7 @@ export class Square{
             this._viewer.show();
         }
     }
-    
+
     public get color() {
         return this._color;
     }
@@ -32,8 +37,8 @@ export class Square{
         this._color = val;
     }
 
-    public constructor( 
-        private _point: Point, 
-        private _color: string
-    ) { }
+    // public constructor( 
+    //     private _point: Point, 
+    //     private _color: string
+    // ) { }
 }
