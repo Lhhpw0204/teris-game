@@ -24,6 +24,7 @@ export class Square{
             this._viewer.show();
         }
     }
+    
     public get color() {
         return this._color;
     }
