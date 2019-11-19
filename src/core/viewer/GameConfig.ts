@@ -4,6 +4,6 @@ export default {
         height: 20
     },
     nextSize: {
-        width: 10
+        width: 20
     }
 }

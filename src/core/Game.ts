@@ -3,6 +3,7 @@ import { SquareGroup } from "./SquareGroup"
 import { TerisRule } from "./TerisRule"
 import { createTeris } from "./Teris"
 import GameConfig from "./viewer/GameConfig";
+import { Square } from "./Square";
 
 export class Game {
     // 游戏状态
@@ -12,9 +13,11 @@ export class Game {
     // 下一个方块
     private _nextTeris: SquareGroup = createTeris({x: 0, y: 0});
     // 计时器
-    private _timer?: number;
+    private _timer?: any;
     // 间隔时间
     private _duration: number = 1000;
+    // 已落下的方块
+    private _exists: Square[] = [];
     constructor(private _viewer: GameViewer) {
         this.resetCenterPoint(GameConfig.nextSize.width, this._nextTeris);
         this._viewer.showNext(this._nextTeris)
@@ -36,7 +39,9 @@ export class Game {
         }
         this._timer = setInterval(() => {
             if(this._curTeris) {
-                TerisRule.move(this._curTeris, MoveDirection.down)
+                if(!TerisRule.move(this._curTeris, MoveDirection.down, this._exists)) {
+                    this.hitBottom();
+                }
             }
         }, this._duration)
     }
@@ -75,22 +80,30 @@ export class Game {
 
     control_left() {
         if(this._curTeris && this._gamesStatus === GameStatus.playing) {
-            TerisRule.move(this._curTeris, MoveDirection.left)
+            TerisRule.move(this._curTeris, MoveDirection.left, this._exists)
         }
     }
     control_right() {
         if(this._curTeris && this._gamesStatus === GameStatus.playing) {
-            TerisRule.move(this._curTeris, MoveDirection.right)
+            TerisRule.move(this._curTeris, MoveDirection.right, this._exists)
         }
     }
     control_down() {
         if(this._curTeris && this._gamesStatus === GameStatus.playing) {
-            TerisRule.move(this._curTeris, MoveDirection.down)
+            TerisRule.moveDirectly(this._curTeris, MoveDirection.down, this._exists);
+            this.hitBottom();
         }
     }
     control_rotate() {
         if(this._curTeris && this._gamesStatus === GameStatus.playing) {
-            TerisRule.rotate(this._curTeris)
+            TerisRule.rotate(this._curTeris, this._exists)
         }
+    }
+
+    private hitBottom(){
+        //  触底操作
+        // 将当前的俄罗斯方块 加入到已保存的方块数组中
+        this._exists.push(...this._curTeris!.suqares);
+        this.switchTeris();
     }
 }

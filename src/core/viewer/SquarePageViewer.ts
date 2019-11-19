@@ -1,5 +1,5 @@
 import { Square } from "../Square"
-import $ from "jquery"
+// import $ from "jquery"
 import { IViewer } from "../types"
 import PageConfig from "./PageConfig"
 
