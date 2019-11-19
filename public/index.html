@@ -7,17 +7,33 @@
     <title>teris-game</title>
     <style>
         #root{
-            width: 600px;
-            height: 600px;
-            margin: 0 auto;
+            justify-content: center;
+            display: flex;
+        }
+        #panel{
             background-color: #000;
             position: relative;
+            width: 600px;
+            height: 600px;
+        }
+        #next{
+            position: relative;
+            width: 120px;
+            height: 120px;
         }
     </style>
 </head>
 <body>
     <div id="root">
-
+        <div id="panel"></div>
+        <div id="tip">
+            <div id="next"></div>
+        </div>
+    </div>
+    <div>
+        <span id="left">left</span>
+        <span id="down">down</span>
+        <span id="right">right</span>
     </div>
 </body>
 </html>

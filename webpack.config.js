@@ -15,7 +15,12 @@ module.exports = {
         rules: [
             { 
                 test: /\.ts?$/, 
-                loader: "ts-loader" 
+                use: {
+                    loader: "ts-loader",
+                    options: {
+                        transpileOnly: true
+                    }
+                }
             }
         ]
     },

@@ -2,13 +2,21 @@ import { Square } from "./core/Square";
 import { SquareGroup } from "./core/SquareGroup";
 import { SquarePageViewer } from "./core/viewer/SquarePageViewer";
 import $ from "jquery"
-import { LShape, createTeris } from "./core/Teris"
+import { createTeris } from "./core/Teris"
+import { TerisRule } from "./core/TerisRule";
+import { MoveDirection } from "./core/types";
 
-
-// const sq = new Square();
-// sq.viewer = new SquarePageViewer(sq, $("#root"));
-const group = createTeris({x: 3,y: 2})
-group.suqares.forEach( sq => {
-    console.log('sq', sq)
+const teris = createTeris({x: 3,y: 2})
+teris.suqares.forEach( sq => {
     sq.viewer = new SquarePageViewer(sq, $("#root"));
 })
+
+$("#left").click(function () {
+    TerisRule.move(teris, MoveDirection.left)
+});
+$("#down").click(function () {
+    TerisRule.move(teris, MoveDirection.down)
+});
+$("#right").click(function () {
+    TerisRule.move(teris, MoveDirection.right)
+});
