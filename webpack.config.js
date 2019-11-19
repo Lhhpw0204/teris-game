@@ -9,7 +9,7 @@ module.exports = {
         filename: "script/bundle.js"
     },
     resolve: {
-        extensions: ["ts", "js"]
+        extensions: [".ts", ".js"]
     },
     module: {
         rules: [
@@ -24,5 +24,8 @@ module.exports = {
             template: './public/index.html'
         }),
         new CleanWebpackPlugin()
-    ]
+    ],
+    devServer: {
+        open: true
+    }
 }

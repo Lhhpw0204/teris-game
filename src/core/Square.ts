@@ -9,6 +9,9 @@ export class Square{
     }
     public set viewer(v) {
         this._viewer = v;
+        if(v) {
+            v.show();
+        }
     }
 
     public get point() {
@@ -28,7 +31,8 @@ export class Square{
         this._color = val;
     }
 
-    public constructor( private _point: Point, private _color: string) { }
+    public constructor( 
+        private _point: Point, 
+        private _color: string
+    ) { }
 }
-
-// const sq = new Square();
