@@ -1,6 +1,8 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.ts",
@@ -28,9 +30,16 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: './public/index.html'
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new BundleAnalyzerPlugin()
     ],
+    optimization: {
+        minimizer: [new UglifyJsPlugin({
+            test: /\.ts(\?.*)?$/i,
+        })],
+    },
     devServer: {
-        open: true
+        open: true,
+        hot: true
     }
 }
