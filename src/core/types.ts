@@ -1,5 +1,6 @@
 import { Square } from "./Square";
 import { SquareGroup } from "./SquareGroup";
+import { Game } from "./Game";
 
 export interface Point{
     readonly x: number,
@@ -29,4 +30,9 @@ export enum GameStatus{
 export interface GameViewer{
     showNext(teris: SquareGroup): void;
     swtich (teris: SquareGroup): void;
+    init(game: Game): void; // 界面初始化
+    showScore(score: number): void;
+    onGamePause(): void;
+    onGameStart(): void;
+    onGameOver(): void;
 }

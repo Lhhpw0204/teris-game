@@ -5,18 +5,7 @@ import { SquarePageViewer } from "./core/viewer/SquarePageViewer";
 import { createTeris } from "./core/Teris"
 import { TerisRule } from "./core/TerisRule";
 import { MoveDirection } from "./core/types";
+import { Game } from "./core/Game";
+import { GamePageViewer } from "./core/viewer/GamePageViewer";
 
-const teris = createTeris({x: 3,y: 2})
-teris.suqares.forEach( sq => {
-    sq.viewer = new SquarePageViewer(sq, $("#panel"));
-})
-
-$("#left").click(function () {
-    TerisRule.move(teris, MoveDirection.left)
-});
-$("#down").click(function () {
-    TerisRule.move(teris, MoveDirection.down)
-});
-$("#right").click(function () {
-    TerisRule.move(teris, MoveDirection.right)
-});
+new Game(new GamePageViewer());

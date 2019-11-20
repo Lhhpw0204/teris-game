@@ -13,27 +13,39 @@
         #panel{
             background-color: #000;
             position: relative;
-            width: 600px;
-            height: 600px;
         }
         #next{
             position: relative;
-            width: 120px;
-            height: 120px;
+        }
+        #score{
+            font-size: 4em;
+            text-align: center;
+            font-weight: bold;
+            color: #f20;
+        }
+        #msg{
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            color: #fff;
+            text-align: center;
+            line-height: 100%;
+            font-size: 3em;
         }
     </style>
 </head>
 <body>
     <div id="root">
-        <div id="panel"></div>
+        <div id="panel">
+            <div id="msg">pause</div>
+        </div>
         <div id="tip">
             <div id="next"></div>
+            <div id="score"></div>
         </div>
-    </div>
-    <div style="text-align: center;">
-        <span id="left">left</span>
-        <span id="down">down</span>
-        <span id="right">right</span>
     </div>
     <script src="http://circleforex.oss-cn-shanghai.aliyuncs.com/static/js/jquery.min.js"></script>
 </body>

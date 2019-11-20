@@ -49,21 +49,22 @@ export class SquareGroup{
 
     afterRotateShape(): Shape {
         if(this.isClock) {
-            this._shape.map( it => {
-                return {
+            return this._shape.map( it => {
+                const newP: Point = {
                     x: -it.y,
                     y: it.x
                 }
+                return newP;
             })
         } else {
-            this._shape.map( it => {
-                return {
+            return this._shape.map( it => {
+                const newP: Point = {
                     x: it.y,
                     y: -it.x
                 }
+                return newP;
             })
         }
-        return this._shape;
     }
 
     rotate() {
